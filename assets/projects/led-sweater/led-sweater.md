@@ -1,0 +1,2 @@
+*Made for Halloween 2022*
+This project is a remix of [DaveMakesStuff's Design](https://thangs.com/designer/DaveMakesStuff/3d-model/Wearable%20Spine-27874?utm_source=youtube&utm_medium=video&utm_campaign=zack_f), by embedding individual Neopixels within each vertebra, and wiring them up to an ESP32 running WLED. This enabled control with my phone, but with the embedded microphone at the bottom of the sweater, also allowed it to be reactive to music.

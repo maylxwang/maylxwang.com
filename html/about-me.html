@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div class="container" id="container"></div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/about-me.js"></script>
+    <script>
+
+        function render() {
+            container.innerHTML = '';
+            
+            height = window.innerHeight;
+            width = window.innerWidth;
+
+            const fragment = document.createDocumentFragment();
+            const elements = [
+                ...templateElements(height, width, 'about me'),
+                ...aboutMeElements(height, width)
+            ];
+            elements.forEach((el) => fragment.appendChild(el));
+            container.appendChild(fragment);
+        }
+
+        render();
+        window.addEventListener("resize", render);
+    </script>
+</body>
+
+</html>

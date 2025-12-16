@@ -1,0 +1,1 @@
+This project was made as a gift for a friend, and was my first time setting up a custom CAM in Fusion 360. The box was done created using boxes.py, but also had to be quite heavily post-processed. Due to the laser cutter I had access to not being properly calibrated and burning edges, I ended up using wax blocks and a hot air gun to coat the edges for smoother opening / closing.

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+  <div class="container" id="container"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/template.js"></script>
+  <script>
+
+    function render() {
+      const container = document.getElementById("container");
+      container.querySelectorAll(".line, .number-label, .nav-label").forEach((el) => el.remove());
+      
+      const showScrollbar = false;
+       
+      height = window.innerHeight;
+      width = window.innerWidth;
+      
+      if (showScrollbar) {
+        document.body.style.overflowY = 'show';
+        document.body.style.minHeight = `1000px`;
+        height = 1000;
+        width -= getScrollbarWidth();
+      }     
+
+      const fragment = document.createDocumentFragment();
+      const elements = templateElements(height, width);
+      elements.forEach((el) => fragment.appendChild(el));
+      container.appendChild(fragment);
+    }
+
+    render();
+    window.addEventListener("resize", render);
+  </script>
+</body>
+
+</html>

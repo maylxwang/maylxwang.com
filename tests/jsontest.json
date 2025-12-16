@@ -1,0 +1,11 @@
+{
+  "id": "cuauv-racks",
+  "name": "Submarine PCB Mounting Racks",
+  "blurb": "So when the sub crashes it only mechanically breaks",
+  "date": "September 2024",
+  "assets": {
+    "main": "cuauv-racks.png",
+    "additional": ["cuauv-racks-1.png"],
+    "attachments": ["cuauv-racks.pdf"]
+  }
+}

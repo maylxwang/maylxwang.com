@@ -1,0 +1,134 @@
+// site-generator.js
+const fs = require('fs');
+const path = require('path');
+
+// Sample JSON data structure
+const data = {
+  "items": [
+    {
+      "id": "item1",
+      "title": "First Item",
+      "description": "This is the first item's description",
+      "image": "/images/item1.jpg",
+      "specifications": {
+        "size": "Large",
+        "color": "Blue",
+        "weight": "2kg"
+      }
+    },
+    {
+      "id": "item2",
+      "title": "Second Item",
+      "description": "This is the second item's description",
+      "image": "/images/item2.jpg",
+      "specifications": {
+        "size": "Medium",
+        "color": "Red",
+        "weight": "1.5kg"
+      }
+    }
+  ]
+};
+
+// HTML template function
+function generateHTML(item) {
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${item.title}</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+        </nav>
+    </header>
+    
+    <main>
+        <article class="item-details">
+            <h1>${item.title}</h1>
+            <img src="${item.image}" alt="${item.title}">
+            <p class="description">${item.description}</p>
+            
+            <section class="specifications">
+                <h2>Specifications</h2>
+                <dl>
+                    ${Object.entries(item.specifications)
+                      .map(([key, value]) => `
+                        <dt>${key}</dt>
+                        <dd>${value}</dd>
+                    `).join('')}
+                </dl>
+            </section>
+        </article>
+    </main>
+    
+    <footer>
+        <p>&copy; ${new Date().getFullYear()} Your Company Name</p>
+    </footer>
+</body>
+</html>
+  `.trim();
+}
+
+// Generate sites function
+function generateSites(data) {
+  // Create output directory if it doesn't exist
+  const outputDir = path.join(__dirname, 'output');
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+  }
+
+  // Generate individual pages for each item
+  data.items.forEach(item => {
+    const html = generateHTML(item);
+    const filePath = path.join(outputDir, `${item.id}.html`);
+    fs.writeFileSync(filePath, html);
+    console.log(`Generated: ${filePath}`);
+  });
+
+  // Generate index page
+  const indexHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Catalog</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Item Catalog</h1>
+    </header>
+    
+    <main>
+        <div class="item-grid">
+            ${data.items.map(item => `
+                <div class="item-card">
+                    <img src="${item.image}" alt="${item.title}">
+                    <h2>${item.title}</h2>
+                    <p>${item.description}</p>
+                    <a href="${item.id}.html">View Details</a>
+                </div>
+            `).join('')}
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; ${new Date().getFullYear()} Your Company Name</p>
+    </footer>
+</body>
+</html>
+  `.trim();
+
+  fs.writeFileSync(path.join(outputDir, 'index.html'), indexHTML);
+  console.log('Generated: index.html');
+}
+
+// Run the generator
+generateSites(data);

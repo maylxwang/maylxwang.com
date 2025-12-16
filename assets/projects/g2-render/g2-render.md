@@ -1,0 +1,2 @@
+*Made for MAE 2250: Mechanical Synthesis*
+This was created as a rendering project, which I almost got to animate the clicking motion of due to proper mate modeling. I definitely did not know enough about CAD at the time though, as I spent an unreasonable amount of time detailing features such as injection molding lines.

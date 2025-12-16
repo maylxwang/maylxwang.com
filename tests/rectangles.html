@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Rectangles</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            height: 60px;
+            background-color: #E6E6DB;
+            display: flex;
+        }
+        .rectangle {
+            height: 100%;
+            border: 2px solid #CBCBB5;
+            box-sizing: border-box;
+            /* Add these styles for text centering */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container"></div>
+    <script>
+        function updateRectangles() {
+            const container = document.getElementById('container');
+            const containerWidth = container.offsetWidth;
+            const minWidth = 400;
+            
+            // Calculate how many rectangles can fit
+            const numRectangles = Math.floor(containerWidth / minWidth);
+            
+            // Calculate the width for each rectangle
+            const rectWidth = containerWidth / numRectangles;
+            
+            // Remove existing rectangles
+            container.innerHTML = '';
+            
+            // Array of number words
+            const numbers = ['one', 'two', 'three', 'four'];
+            
+            // Create new rectangles
+            for (let i = 0; i < numRectangles; i++) {
+                const rect = document.createElement('div');
+                rect.className = 'rectangle';
+                rect.style.width = rectWidth + 'px';
+                rect.textContent = numbers[i];  // Add the text
+                container.appendChild(rect);
+            }
+        }
+        // Initial creation
+        updateRectangles();
+        // Update on window resize
+        window.addEventListener('resize', updateRectangles);
+    </script>
+</body>
+</html>

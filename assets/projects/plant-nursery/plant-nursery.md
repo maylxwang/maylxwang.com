@@ -1,0 +1,3 @@
+*Made for Cornell Makeathon 2023*
+I would consider this the first embedded systems project that I made solely by myself, featuring a bunch of sensors (light, humidity, co2, water level), and a thoughtfully (but ultimately not that great) case. I am still pretty proud of the servo + bent heat shrink mechanism for water dispensing though. Also woooo I won the rookie first place award (although my ego at the time still wanted first overall).
+I credit largely two things for making me switch majors from math to MechE. One being this project, the other being that "I thought CADing was like playing Starcraft". 

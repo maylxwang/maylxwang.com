@@ -1,0 +1,2 @@
+This hitbox was a remix of [IINAVII's design](https://cults3d.com/en/3d-model/game/controller-hitbox-case-and-buttons-printable-in-ender3v2), with the changes being the custom gamertag emboss and compatibility with choc switches. This was done by printing out just the name with 0.8mm thickness, then printing the rest with exact alignment with a different colored fillament on a Prusa MK3S.
+I probably only played with the controller for an hour after building it though, as it turns out I don't really like 2d fighters :b

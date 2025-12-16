@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            --transition-time: 0.9s;
+        }
+        
+        .svg-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Prevent text selection */
+        .no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="no-select">
+    <div class="svg-container">
+        <object data="../images/home/name.svg" type="image/svg+xml" width="100%" height="100%"></object>
+    </div>
+
+    <script>
+        document.querySelector('object').addEventListener('load', function() {
+            const svgDoc = this.contentDocument;
+            if (!svgDoc) return;
+
+            // Add styles
+            const style = svgDoc.createElementNS("http://www.w3.org/2000/svg", "style");
+            style.textContent = `
+                :root {
+                    --transition-time: 0.2s;
+                    --hover-color: #FF8000;
+                    --select-color: #53A9FF;
+                }
+
+                /* Base path styles */
+                #Angle,
+                #Datum,
+                #Symmetry,
+                #Circularity {
+                    cursor: pointer;
+                    pointer-events: all;
+                    transition: fill var(--transition-time) ease;
+                    stroke: transparent;
+                    stroke-width: 25px; /* Invisible stroke for more lenient clicking */
+                    paint-order: stroke fill; /* Ensures stroke is painted behind fill */
+                }
+
+                /* Hover effects */
+                #Angle:hover:not(.selected),
+                #Datum:hover:not(.selected),
+                #Symmetry:hover:not(.selected),
+                #Circularity:hover:not(.selected) {
+                    fill: var(--hover-color);
+                }
+
+                /* Selected state */
+                .selected {
+                    fill: var(--select-color) !important;
+                }
+
+                /* Prevent hover effects on Name path */
+                #Name {
+                    pointer-events: none;
+                }
+            `;
+            svgDoc.querySelector('svg').appendChild(style);
+
+            // Handle selection logic
+            let selectedPaths = new Set();
+            const selectablePaths = ['Angle', 'Datum', 'Symmetry', 'Circularity'];
+
+            svgDoc.addEventListener('click', function(e) {
+                const targetPath = e.target.closest('#Angle, #Datum, #Symmetry, #Circularity');
+                
+                // If clicked outside any path, clear selection unless shift is held
+                if (!targetPath) {
+                    if (!e.shiftKey) {
+                        clearAllSelections();
+                    }
+                    return;
+                }
+
+                const pathId = targetPath.id;
+
+                if (e.shiftKey) {
+                    // Toggle selection with shift
+                    if (selectedPaths.has(pathId)) {
+                        selectedPaths.delete(pathId);
+                        targetPath.classList.remove('selected');
+                    } else {
+                        selectedPaths.add(pathId);
+                        targetPath.classList.add('selected');
+                    }
+                } else {
+                    // Single selection without shift
+                    clearAllSelections();
+                    selectedPaths.add(pathId);
+                    targetPath.classList.add('selected');
+                }
+            });
+
+            function clearAllSelections() {
+                selectedPaths.forEach(pathId => {
+                    const path = svgDoc.getElementById(pathId);
+                    if (path) {
+                        path.classList.remove('selected');
+                    }
+                });
+                selectedPaths.clear();
+            }
+
+            function selectAllDimensions() {
+                selectablePaths.forEach(pathId => {
+                    const path = svgDoc.getElementById(pathId);
+                    if (path) {
+                        path.classList.add('selected');
+                        selectedPaths.add(pathId);
+                    }
+                });
+            }
+
+            // Handle clicks outside the SVG
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('object') && !e.shiftKey) {
+                    clearAllSelections();
+                }
+            });
+
+            // Handle Ctrl+A
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'a' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault(); // Prevent default text selection
+                    selectAllDimensions();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

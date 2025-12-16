@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div class="container" id="container"></div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/home.js"></script>
+    <script>
+        function render() {
+            container.innerHTML = '';
+
+            // Then in render():
+            height = window.innerHeight;
+            width = window.innerWidth;
+
+            const fragment = document.createDocumentFragment();
+            const elements = [
+                ...templateElements(height, width, 'home'),
+                ...homeElements(height, width, dims)
+            ];
+
+            elements.forEach(el => fragment.appendChild(el));
+            container.appendChild(fragment);
+        }
+
+        render();
+        window.addEventListener("resize", render);
+    </script>
+</body>
+
+</html>

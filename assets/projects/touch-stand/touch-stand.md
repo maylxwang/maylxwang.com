@@ -1,0 +1,2 @@
+*This project was made as training for LASSP Machine Shop*
+Although I had machined for ~50 hours already before this training, by god was this course useful. Thank you Brandon for making me such a better machinist. Other than the skills I picked up, I fell in love with Trak powerfeed and programming stuff on the mills themselves (though the software is stupid), and how lathes are so much more enjoyable with collets instead of chucks.

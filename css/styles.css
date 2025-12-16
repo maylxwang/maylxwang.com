@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e6e6db;
+  overflow-x: hidden;
+  overflow-x: show;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+}
+
+.line {
+  position: absolute;
+  background-color: #c0c0c0;
+}
+
+.number-label {
+  position: absolute;
+  color: #000000;
+  text-align: center;
+}
+
+.nav-label {
+  position: absolute;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-label-active {
+  color: #53A9FF;
+}
+
+.nav-label:not(.nav-label-active):hover {
+  color: #FF8000;
+}
+
+.svg-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #FF8000;
+}
+
+/* Style for content links (like in about-me page) */
+p a {
+  border-bottom: 1px solid currentColor;
+}
+
+.markdown-content {
+  line-height: 1.5rem; /* Adjust this value to control spacing */
+}
+
+.markdown-content p {
+  margin-bottom: 1rem; /* Space between paragraphs */
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin-top: -3.5rem;
+    margin-bottom: -2rem;
+    padding-left: 2rem; /* Indent lists */
+}
+
+.markdown-content li {
+  margin-bottom: -1rem; /* Space between list items */
+}

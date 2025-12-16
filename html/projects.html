@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Ubuntu:wght@400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body>
+    <div class="container" id="container"></div>
+    <script src="../js/utils.js"></script>
+    <script src="../js/template.js"></script>
+    <script src="../js/projects.js"></script>
+    <script>
+        async function render() {
+            const container = document.getElementById("container");
+            container.innerHTML = "";
+
+            // Calculate dimensions asynchronously
+            const {totalHeight, totalWidth} = await calculateDimensions();
+
+            // Generate template elements with updated height and width
+            const templateElementsArray = templateElements(totalHeight, totalWidth, "projects");
+
+            // Get the project elements asynchronously
+            const projectElementsArray = await projectsElements(totalHeight, totalWidth);
+
+            // Append all elements to the container
+            const fragment = document.createDocumentFragment();
+            templateElementsArray.forEach((el) => fragment.appendChild(el));
+            projectElementsArray.forEach((el) => fragment.appendChild(el));
+            container.appendChild(fragment);
+        }
+
+        render();
+        window.addEventListener("resize", render);
+    </script>
+</body>
+
+</html>
