@@ -64,6 +64,16 @@
   ],
   "smallProjects": [
         {
+      "id": "747-ethics",
+      "name": "Boeing MCAS Ethics Analysis",
+      "blurb": "i'm obviously not keeping this on my site",
+      "date": "December 2025",
+      "assets": {
+        "main": "747-ethics.png",
+        "attachments": []
+      }
+    },
+    {
       "id": "turbine-blade",
       "name": "Miniature Windmill Blade",
       "blurb": "did not blow up in the wind tunnel",
