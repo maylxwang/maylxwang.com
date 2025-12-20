@@ -63,6 +63,19 @@
     }
   ],
   "smallProjects": [
+        {
+      "id": "turbine-blade",
+      "name": "Miniature Windmill Blade",
+      "blurb": "did not blow up in the wind tunnel",
+      "date": "December 2025",
+      "assets": {
+        "main": "turbine-blade.png",
+        "additional": [
+          "turbine-blade-1.png"
+        ],
+        "attachments": []
+      }
+    },
     {
       "id": "split-dye",
       "name": "Vector Field Hair Dye Render",
