@@ -1,5 +1,18 @@
 {
   "bigProjects": [
+        {
+      "id": "dj-display",
+      "name": "DJ Display Matrix",
+      "blurb": "HUB75 DJ Display deck",
+      "date": "December 2025",
+      "assets": {
+        "main": "main.gif",
+        "additional": [
+          "back.jpg",
+          "cad.png"
+        ]
+      }
+    },
     {
       "id": "voder-synth",
       "name": "/\u02c8v\u0259\u028ad\u0259/",
