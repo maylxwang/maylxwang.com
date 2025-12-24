@@ -1,0 +1,36 @@
+    {
+      "id": "dj-display",
+      "name": "DJ Display Matrix",
+      "blurb": "HUB75 DJ Display deck",
+      "date": "December 2025",
+      "assets": {
+        "main": "main.gif",
+        "additional": [
+          "back.jpg",
+          "cad.png"
+        ]
+      }
+    },
+            {
+      "id": "747-ethics",
+      "name": "Boeing MCAS Ethics Analysis",
+      "blurb": "i'm obviously not keeping this on my site",
+      "date": "December 2025",
+      "assets": {
+        "main": "747-ethics.png",
+        "attachments": []
+      }
+    },
+    {
+      "id": "turbine-blade",
+      "name": "Miniature Windmill Blade",
+      "blurb": "did not blow up in the wind tunnel",
+      "date": "December 2025",
+      "assets": {
+        "main": "turbine-blade.png",
+        "additional": [
+          "turbine-blade-1.png"
+        ],
+        "attachments": []
+      }
+    }
